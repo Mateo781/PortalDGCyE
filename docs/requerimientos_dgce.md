@@ -148,9 +148,9 @@ En cumplimiento con los requisitos de la **Actividad 19**, se presentan los sigu
 | Ítem | Requisito | Estado | Observaciones |
 | :--- | :--- | :---: | :--- |
 | **01** | **Repositorio GitHub Limpio** | ✅ Completado | Código estructurado en rama `main` sin archivos temporales, con separación modular (`/css`, `/js`, `/data`, `/docs`, `/img`). |
-| **02** | **Portal DGCyE Desplegado** | 🔄 En proceso | Despliegue en **Vercel** con certificado SSL / protocolo HTTPS activo para producción. |
+| **02** | **Portal DGCyE Desplegado** | ✅ Completado | Despliegue en **Vercel** con certificado SSL / protocolo HTTPS activo para producción. |
 | **03** | **Desafío de IA (Hugging Face)** | ✅ Integrado | Módulo de **Asistente IA** conectado a la Serverless Inference API de Hugging Face mediante token oficial (`hf_...`). |
-| **04** | **Código QR Institucional** | ⏳ Pendiente de imagen | Código QR apuntando a la URL pública de producción en Vercel para acceso desde dispositivos móviles. |
+| **04** | **Código QR Institucional** | ✅ Completado | Código QR institucional generado digitalmente con isotipo oficial de PBA apuntando al sistema en producción. |
 
 ---
 
@@ -174,11 +174,14 @@ En lugar de navegar resoluciones extensas o aplicar filtros manuales, los inspec
 ### 6.3 Despliegue en Producción y Código QR Institucional
 
 * **Plataforma de Hosting Cloud:** Vercel (CI/CD conectado a GitHub con protocolo HTTPS).
-* **URL Pública de Producción:** `https://portal-dgce.vercel.app` *(o tu URL generada en Vercel)*.
+* **URL Pública de Producción:** `https://portal-dgcye.vercel.app`
 
 #### Código QR de Acceso Móvil
-_Espacio reservado para la imagen del código QR oficial apuntando al sistema en producción:_
 
-> **Nota:** El código QR institucional se adjunta en este documento para permitir que los evaluadores de la Expo Técnica, directivos y docentes accedan directamente al portal en sus celulares escaneando el informe técnico.
+![Código QR Portal DGCyE](./qr_portal_dgce.png)
+
+_Figura 2: Código QR institucional oficial con isotipo de la Provincia de Buenos Aires para acceso inmediato desde celulares o tablets._
+
+> **Nota:** El código QR institucional se adjunta en este documento para permitir que los evaluadores de la Expo Técnica, directivos y docentes accedan directamente al portal en producción desde sus dispositivos móviles escaneando este informe técnico.
 
 
