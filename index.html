@@ -129,6 +129,13 @@
 
         <!-- FILTROS RÁPIDOS ACTIVOS -->
         <div class="active-chips" id="active-chips"></div>
+
+        <!-- BOTÓN ASISTENTE IA (ACTIVIDAD 20 - HUGGING FACE) -->
+        <button type="button" class="btn-ia-assistant" id="btn-ia-open" title="Consultar normativa mediante lenguaje natural con IA de Hugging Face">
+          <span class="ia-icon-anim">🤖</span>
+          <span class="ia-btn-label">Asistente IA</span>
+          <span class="ia-pill-tag">Hugging Face</span>
+        </button>
       </div>
 
       <!-- INDICADOR DE RENDIMIENTO (RNF-01 < 100 ms) -->
@@ -153,6 +160,84 @@
       <!-- Se inyecta dinámicamente con JavaScript -->
     </section>
   </main>
+
+  <!-- MODAL ASISTENTE IA (ACTIVIDAD 20 - HUGGING FACE) -->
+  <div class="modal-overlay hidden" id="ia-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="ia-modal-title">
+    <div class="ia-modal">
+      <div class="ia-modal-header">
+        <div class="ia-title-box">
+          <span class="ia-avatar">🤖</span>
+          <div>
+            <h3 id="ia-modal-title">Asistente IA Institucional (DGCyE)</h3>
+            <p class="ia-subtitle">Procesamiento de Lenguaje Natural con modelos de <strong>Hugging Face</strong></p>
+          </div>
+        </div>
+        <button type="button" class="btn-modal-close" id="btn-ia-close" aria-label="Cerrar modal">&times;</button>
+      </div>
+
+      <div class="ia-modal-body">
+        <!-- Preguntas rápidas de ejemplo -->
+        <div class="ia-quick-section">
+          <span class="quick-title">Preguntas sugeridas (haz clic para probar):</span>
+          <div class="quick-chips">
+            <button type="button" class="quick-chip" data-q="¿Cuáles son las pautas para ferias de ciencias?">🎪 Pautas para ferias de ciencias</button>
+            <button type="button" class="quick-chip" data-q="¿Qué normativa regula las prácticas profesionalizantes?">🛠️ Prácticas profesionalizantes</button>
+            <button type="button" class="quick-chip" data-q="¿Cómo es la actualización del plan de 7mo año de Programación?">💻 Plan 7mo año Programación</button>
+            <button type="button" class="quick-chip" data-q="¿Cuáles son los protocolos de seguridad en talleres?">🦺 Seguridad en talleres y laboratorios</button>
+          </div>
+        </div>
+
+        <!-- Formulario de Consulta -->
+        <form id="ia-query-form" class="ia-form">
+          <div class="ia-input-wrapper">
+            <input 
+              type="text" 
+              id="ia-user-input" 
+              placeholder="Ej: ¿Cuáles son las pautas para ferias de ciencias?..." 
+              required 
+              autocomplete="off"
+            />
+            <button type="submit" class="btn-ia-submit" id="btn-ia-submit">
+              <span>Consultar</span>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </button>
+          </div>
+        </form>
+
+        <!-- Indicador de Carga -->
+        <div class="ia-loading hidden" id="ia-loading">
+          <div class="spinner"></div>
+          <p>Conectando con <strong>Hugging Face Serverless Inference API</strong> y procesando la consulta...</p>
+        </div>
+
+        <!-- Caja de Respuesta -->
+        <div class="ia-response-box hidden" id="ia-response-box">
+          <div class="ia-response-header">
+            <span class="ia-model-badge" id="ia-model-badge">Hugging Face • Inference API</span>
+            <span class="ia-time-badge" id="ia-time-badge">0.0 ms</span>
+          </div>
+          <div class="ia-response-text" id="ia-response-text"></div>
+          
+          <!-- Tarjeta de la normativa oficial detectada -->
+          <div class="ia-matched-card hidden" id="ia-matched-card">
+            <h4>📄 Normativa oficial detectada:</h4>
+            <div id="ia-matched-content"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ia-modal-footer">
+        <div class="ia-token-status">
+          <span class="status-dot active"></span>
+          <span>Hugging Face API Token: <code>hf_oNV...mits</code> (Activo)</span>
+        </div>
+        <button type="button" class="btn-ia-secondary" id="btn-ia-reset">Nueva pregunta</button>
+      </div>
+    </div>
+  </div>
 
   <!-- MODAL / TOAST DE NOTIFICACIÓN DE DESCARGA -->
   <div class="toast" id="toast" role="status" aria-live="polite"></div>

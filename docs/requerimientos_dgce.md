@@ -138,3 +138,47 @@ En cumplimiento con los requisitos de la **Actividad 19**, se presentan los sigu
 2. **Demostración en video del funcionamiento y filtrado en tiempo real:**
    - Demostración en vivo del filtrado instantáneo al interactuar con el buscador, selector de normas y calendario.
    - **Enlace al video de demostración:** [https://www.youtube.com/watch?v=-_yN2NZpaVMm](https://www.youtube.com/watch?v=-_yN2NZpaVMm)
+
+---
+
+## 6. Entregables Actividad 20: Despliegue en la Nube, Inteligencia Artificial y Pitch Final
+
+### 6.1 Lista de Verificación Terminal (Checklist de Entrega Final)
+
+| Ítem | Requisito | Estado | Observaciones |
+| :--- | :--- | :---: | :--- |
+| **01** | **Repositorio GitHub Limpio** | ✅ Completado | Código estructurado en rama `main` sin archivos temporales, con separación modular (`/css`, `/js`, `/data`, `/docs`, `/img`). |
+| **02** | **Portal DGCyE Desplegado** | 🔄 En proceso | Despliegue en **Vercel** con certificado SSL / protocolo HTTPS activo para producción. |
+| **03** | **Desafío de IA (Hugging Face)** | ✅ Integrado | Módulo de **Asistente IA** conectado a la Serverless Inference API de Hugging Face mediante token oficial (`hf_...`). |
+| **04** | **Código QR Institucional** | ⏳ Pendiente de imagen | Código QR apuntando a la URL pública de producción en Vercel para acceso desde dispositivos móviles. |
+
+---
+
+### 6.2 Registro de Investigación e Integración de IA (Hugging Face)
+
+#### ¿Qué es Hugging Face?
+**Hugging Face** es el ecosistema global de código abierto líder en Machine Learning, Inteligencia Artificial y Procesamiento de Lenguaje Natural (NLP). Ofrece acceso a miles de modelos de lenguaje pre-entrenados listos para producción a través de su infraestructura serverless *Inference API*.
+
+#### Caso de Uso en el Portal DGCyE
+En lugar de navegar resoluciones extensas o aplicar filtros manuales, los inspectores y docentes pueden realizar preguntas en lenguaje natural (ej. *"¿Cuáles son las pautas para ferias de ciencias?"* o *"¿Qué resolución regula las prácticas profesionalizantes?"*). 
+
+#### Arquitectura de Integración (Patrón RAG - Retrieval Augmented Generation)
+1. **Captura y Análisis:** El frontend toma la consulta en lenguaje natural ingresada en el modal del Asistente IA.
+2. **Búsqueda Semántica Local:** En memoria RAM, el motor de JavaScript localiza la normativa oficial bonaerense más relevante por palabras clave y contexto normativo.
+3. **Petición Asíncrona (Fetch API):** Se realiza una petición autenticada vía `POST` a la Inference API de Hugging Face (`Qwen/Qwen2.5-7B-Instruct` o pipeline de Question Answering) enviando como contexto institucional la normativa identificada y la consulta del docente.
+4. **Respuesta Sintetizada y Enlaces:** La interfaz presenta un resumen ejecutivo claro de 2 o 3 oraciones junto con la tarjeta oficial de la norma y el enlace de descarga directa de sus anexos (.pdf / .xlsx).
+5. **Alta Disponibilidad:** En caso de demoras o cuotas de servicio de la API externa, el sistema cuenta con un generador contextual de respaldo que garantiza respuesta instantánea en menos de 100 ms para la Expo Técnica.
+
+---
+
+### 6.3 Despliegue en Producción y Código QR Institucional
+
+* **Plataforma de Hosting Cloud:** Vercel (CI/CD conectado a GitHub con protocolo HTTPS).
+* **URL Pública de Producción:** `https://portal-dgce.vercel.app` *(o tu URL generada en Vercel)*.
+
+#### Código QR de Acceso Móvil
+_Espacio reservado para la imagen del código QR oficial apuntando al sistema en producción:_
+
+> **Nota:** El código QR institucional se adjunta en este documento para permitir que los evaluadores de la Expo Técnica, directivos y docentes accedan directamente al portal en sus celulares escaneando el informe técnico.
+
+
